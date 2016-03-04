@@ -35,6 +35,10 @@ EMAIL_HOST_PASSWORD = 'txeguhsxlowhszcs'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
+#Disable admin
+#ADMIN_ENABLED = False
+
+
 # Application definition
 
 INSTALLED_APPS = [
