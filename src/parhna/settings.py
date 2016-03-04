@@ -36,7 +36,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 #Disable admin
-#ADMIN_ENABLED = False
+ADMIN_ENABLED = False
 
 
 # Application definition
@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'newsletter',
     'registration',
+    'userprofiles',
 ]
 
 MIDDLEWARE_CLASSES = [
