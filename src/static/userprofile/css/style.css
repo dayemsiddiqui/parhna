@@ -1,0 +1,32 @@
+.sidebar{
+color: white;
+margin-left: -15%;
+}
+.fcustom{
+  padding-right: 5%;
+}
+section{
+  padding-bottom: 0px;
+}
+.sidebar  ul{
+   background: #18bc9c;
+   list-style-type: none;
+   padding-top: 20%;
+   padding-bottom: 40%;
+   margin-bottom: 0px;
+
+}
+.sidebar  li{
+padding-top:3%;
+padding-bottom:3%;
+}
+.sidebar  li:hover{
+background: red;
+}
+.sidebar li a{
+  color: white;
+  padding-left: 20%;
+  font-size: 1.5vw;
+  text-decoration: none;
+
+}

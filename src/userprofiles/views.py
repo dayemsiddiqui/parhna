@@ -10,3 +10,6 @@ def register(request):
             return render(request, "subscribe.html", {})
         else:
             print form.errors
+
+def profile(request):
+    return render(request, "profile.html", {})
