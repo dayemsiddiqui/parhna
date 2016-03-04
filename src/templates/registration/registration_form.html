@@ -1,3 +1,4 @@
+{% load staticfiles %}
 {% extends "base.html" %}
 {% load i18n %}
 
@@ -8,7 +9,7 @@
   {% csrf_token %}
   {{ form.as_p }}
 
-  <input type="submit" value="{% trans 'Join' %}" />
+  <input type="submit" class="btn btn-success btn-lg" value="{% trans 'Sign Up' %}" />
 </form>
 
 

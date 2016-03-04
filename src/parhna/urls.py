@@ -23,5 +23,5 @@ urlpatterns = [
 
     #url(r'^admin/', admin.site.urls),
     #This is the registration url
-    url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'^accounts/', include('userprofiles.urls')),
 ]
