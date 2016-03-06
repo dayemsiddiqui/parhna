@@ -90,7 +90,7 @@ app.config(['$httpProvider', function($httpProvider) {
 app.controller('getUserData', function($scope, $http) {
   $scope.submit = function() {
     var parameter = JSON.stringify($scope.profile);
-    $http.post("http://127.0.0.1:8000/accounts/profile/saveprofile", parameter).
+    $http.post("/accounts/profile/saveprofile", parameter).
     success(function(data, status, headers, config) {
         // this callback will be called asynchronously
         // when the response is available
