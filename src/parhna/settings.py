@@ -39,6 +39,9 @@ EMAIL_USE_TLS = True
 ADMIN_ENABLED = False
 
 
+#USER AUTH Model
+# AUTH_USER_MODEL = 'userprofiles.Users'
+
 # Application definition
 
 INSTALLED_APPS = [

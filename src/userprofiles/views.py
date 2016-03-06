@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from .forms import RegistrationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from .models import UserProfile
+import json
 
 # Create your views here.
 def register(request):
@@ -11,6 +13,8 @@ def register(request):
         if form.is_valid():
             user = User.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'], form.cleaned_data['password'])
             user.save()
+            profile = UserProfile(user=user)
+            profile.save()
             print "You have been registered sucessfully"
             return HttpResponseRedirect("/accounts/login")
         else:
@@ -51,6 +55,21 @@ def profile(request):
             return HttpResponseRedirect("/accounts/login")
 
 
+#Profile Display and editing
+def editprofile(request):
+    if request.user.is_authenticated():
+        context = {
+        'username': request.user.username,
+        'email': request.user.email
+        }
+        return render(request, "profileinfo.html", context)
+    else:
+        return HttpResponseRedirect("/")
+
+
+# =================================
+#           HELPER METHODS
+# =================================
 #display and render dashboard
 def display_profile(request):
     context = {
@@ -58,3 +77,39 @@ def display_profile(request):
     'email': request.user.email
     }
     return render(request, "profile.html", context)
+
+
+
+# =================================
+#           JSON API
+# =================================
+def json_getprofile(request):
+    if request.user.is_authenticated():
+        profile =  UserProfile.objects.get(user=request.user)
+        response = {'email':request.user.email,
+                    'username': request.user.username,
+                    'first_name': request.user.first_name,
+                    'last_name': request.user.last_name,
+                    'institute': profile.institute}
+        return JsonResponse(response)
+    else:
+        return HttpResponseRedirect("/")
+
+# Saves data to the database
+def json_saveprofile(request):
+    if request.method == 'POST':
+        if request.user.is_authenticated():
+            data = json.loads(request.body)
+            print data
+            userprofile = UserProfile.objects.get(user = request.user)
+            userprofile.institute = data['institute']
+            userprofile.save()
+            request.user.first_name = data['first_name']
+            request.user.last_name = data['last_name']
+            request.user.save()
+            response = {'status': "Your profile was saved successfully"}
+            return JsonResponse(response)
+        else:
+            return HttpResponseRedirect("/")
+    else:
+        return HttpResponseRedirect("/")
