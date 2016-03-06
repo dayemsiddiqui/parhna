@@ -6,4 +6,4 @@ from django.contrib.auth.models import User
 # Create your models here.
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    institute = models.CharField(max_length=100)
+    institute = models.CharField(max_length=120)

@@ -20,7 +20,7 @@ urlpatterns = [
 
     url(r'^$', 'parhna.views.index', name = 'index'),
     url(r'^newsletter/', include('newsletter.urls')),
-
+    url(r'^questions/', include('questions.urls')),
     #url(r'^admin/', admin.site.urls),
     #This is the registration url
     url(r'^accounts/', include('userprofiles.urls')),
