@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+  {% block css %}
+  <link href="{% static "questions/css/styles.css" %}" rel="stylesheet" type="text/css">
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  {% endblock %}
+
+{% block content %}
+
+<section ng-app="getQuestions" ng-controller='getData'>
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-8">
+
+        <div class="questionbox" ng-repeat="question in questions">
+          <div class="row qtopbar" ng-bind='question.title'>
+            <!-- Question Title goes here -->
+          </div>
+          <div class="row qtbox" ng-bind='question.description'>
+            <!-- Question description goes here -->
+          </div>
+        </div>
+
+
+<!-- ============================================================= -->
+                     <!-- Answer Template -->
+<!-- ============================================================= -->
+        <!-- <div class="answerbox">
+          <div class="row anbox">
+            This is the answer of the given question
+          </div>
+        </div> -->
+<!-- ===============================================================       -->
+
+      </div>
+      <div class="col-md-4">
+        <h1>World</h1>
+        <h1>World</h1>
+        <h1>World</h1>
+        <h1>World</h1>
+        <h1>World</h1>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block script %}
+{% verbatim %}
+<script>
+var app = angular.module('getQuestions', []);
+app.config(['$httpProvider', function($httpProvider) {
+    $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+}]);
+app.controller('getData', function($scope, $http) {
+
+  $http.get("/questions/json_get")
+  .then(function(response) {
+      $scope.questions = response.data;
+      $scope.number = Object.keys($scope.questions).length;
+      var i = 0;
+      while(i < $scope.number){
+          console.log($scope.questions[i]);
+          i++;
+      }
+
+  });
+});
+</script>
+{% endverbatim %}
+{% endblock %}

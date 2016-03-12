@@ -1,0 +1,29 @@
+.qtopbar{
+  background: #18bc9c;
+  padding: 5px;
+  font-size: 25px;
+  margin-right: 5%;
+  margin-top: 5%;
+}
+.qtbox{
+  background: #eaeaea;
+  height: 250px;
+  padding: 10px;
+  margin-right: 5%;
+  -webkit-box-shadow: -4px 9px 25px -5px rgba(153,153,153,1);
+  -moz-box-shadow: -4px 9px 25px -5px rgba(153,153,153,1);
+  box-shadow: -4px 9px 25px -5px rgba(153,153,153,1);
+}
+form{
+  margin-top: 5%;
+}
+.anbox{
+  background: #eaeaea;
+  height: 250px;
+  padding: 10px;
+  margin-right: 5%;
+  margin-top: 50px;
+  -webkit-box-shadow: -4px 9px 25px -5px rgba(153,153,153,1);
+  -moz-box-shadow: -4px 9px 25px -5px rgba(153,153,153,1);
+  box-shadow: -4px 9px 25px -5px rgba(153,153,153,1);
+}

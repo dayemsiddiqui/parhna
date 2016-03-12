@@ -5,7 +5,8 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Question(models.Model):
-    question = models.TextField(blank=True, null=True)
+    title =  models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
     author = models.CharField(max_length=120, blank=True, null=True)
     published_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
@@ -24,4 +25,4 @@ class Answer(models.Model):
 
 class Tags(models.Model):
     tag = models.CharField(max_length=120, blank=True, null=True)
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)    
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
