@@ -18,6 +18,7 @@ from django.conf.urls import include, url
 
 urlpatterns = [
 
+    url(r'^register$', 'parhna.views.register', name = 'register'),
     url(r'^$', 'parhna.views.index', name = 'index'),
     url(r'^newsletter/', include('newsletter.urls')),
     url(r'^questions/', include('questions.urls')),
