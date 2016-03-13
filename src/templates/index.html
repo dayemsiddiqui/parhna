@@ -63,11 +63,25 @@
 
 
 
-              <div class="collection">
-              <section ng-repeat="question in questions">
+              <div class="section center loader">
+                <div class="preloader-wrapper big active">
+                  <div class="spinner-layer spinner-green-only">
+                    <div class="circle-clipper left">
+                      <div class="circle"></div>
+                    </div><div class="gap-patch">
+                      <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                      <div class="circle"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            <div class="collection hide">
+              <section  ng-repeat="question in questions">
                 <a href="#!" class="collection-item">
                   <div class="section">
-
                     <div class="valign-wrapper">
                       <div class="valign">
                         <h6 ng-bind="question.title"></h6>
@@ -156,13 +170,8 @@
     $http.get("/questions/json_get")
     .then(function(response) {
         $scope.questions = response.data;
-        $scope.number = Object.keys($scope.questions).length;
-        var i = 0;
-        while(i < $scope.number){
-            console.log($scope.questions[i]);
-            i++;
-        }
-
+        $('div.loader').hide();
+        $('div.collection').removeClass('hide');
     });
   });
   </script>
