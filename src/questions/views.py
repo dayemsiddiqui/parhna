@@ -6,11 +6,34 @@ from django.core import serializers
 
 # Create your views here.
 def index(request):
-    return render(request, "ask.html", {})
+    return render(request, "explore.html", {})
+
+def ask_question(request):
+    if request.user.is_authenticated():
+        return render(request, "ask.html", {})
+    else:
+        return HttpResponseRedirect("/questions")
+
+def get_question(request, q_id):
+    question = Question.objects.get(question_id=q_id)
+    context = {
+        'question': question
+    }
+    return render(request, "questions.html", context)
+
+# ===========================================
+#     Information Processing Functions
+# ===========================================
 
 
-def ask(request):
-    return render(request, "questions.html", {})
+def save(request):
+    if request.method == 'POST':
+        if request.user.is_authenticated():
+            question = Question(title=request.POST.get("title"), description=request.POST.get("description"), author=request.user.username, votes=0)
+            question.save()
+            return HttpResponseRedirect("/")
+    else:
+        return HttpResponseRedirect("/")
 
 def json_save(request):
     print "Hello"
@@ -34,6 +57,7 @@ def json_get(request):
         for question in questions:
             response[i] = {}
             print "================"
+            response[i]['id'] = question.question_id
             response[i]['title'] = question.title
             response[i]['description'] = question.description
             response[i]['author'] = question.author

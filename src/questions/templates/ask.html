@@ -1,75 +1,136 @@
-{% extends 'base.html' %}
 {% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
 
-  {% block css %}
-  <link href="{% static "questions/css/styles.css" %}" rel="stylesheet" type="text/css">
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="{% static "main/css/materialize.css" %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static "main/css/style.css" %}" type="text/css" rel="stylesheet" media="screen,projection"/>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-  {% endblock %}
+</head>
+<body>
+  <nav class="blue-grey darken-3" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Parhna</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Explore</a></li>
+      </ul>
 
-{% block content %}
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <div class="section no-pad-bot" id="index-banner">
 
-<section ng-app="getQuestions" ng-controller='getData'>
+  <div>
+      <br><br>
+      <div class="row">
 
-  <div class="container">
-    <div class="row">
+        <div class="col s8">
 
-      <div class="col-md-8">
+            <div class="card-panel">
+              <span class="teal-text card-title"> <h5>Ask A Question</h5>
+              </span>
+              <form class="" action="/questions/save" method="post">
+                {% csrf_token %}
+                <label>Title</label>
+                <input type="text" name="title" value="">
+                <label>Description</label>
+                <textarea id="mytextarea" name="description"></textarea>
+                <br>
+                <input type="submit" class="btn waves-effect waves-light" name="submit" value="submit">
+              </form>
+            </div>
 
-        <div class="questionbox" ng-repeat="question in questions">
-          <div class="row qtopbar" ng-bind='question.title'>
-            <!-- Question Title goes here -->
-          </div>
-          <div class="row qtbox" ng-bind='question.description'>
-            <!-- Question description goes here -->
-          </div>
+
+        </div>
+
+        <div class="col s4">
+          <div class="card-panel teal lighten-3">
+            <span class="white-text card-title"> <h5>Latest Questions</h5>
+            </span>
+            <div class="collection">
+              <a href="#!" class="collection-item">Can somebody please explain how to make a hangman in MIPS assembly?
+                <div class="chip">Jane Doe</div> <br> -5 secs ago</a>
+                <a href="#!" class="collection-item">Can somebody please explain how to make a hangman in MIPS assembly?
+                  <div class="chip">Jane Doe</div> <br> -5 secs ago </a>
+                  <a href="#!" class="collection-item">Can somebody please explain how to make a hangman in MIPS assembly?
+                    <div class="chip">Jane Doe</div> <br> -5 secs ago </a>
+                  </div>
+                </div>
+              </div>
         </div>
 
 
-<!-- ============================================================= -->
-                     <!-- Answer Template -->
-<!-- ============================================================= -->
-        <!-- <div class="answerbox">
-          <div class="row anbox">
-            This is the answer of the given question
-          </div>
-        </div> -->
-<!-- ===============================================================       -->
+      </div>
+      <br><br>
+  </div>
 
-      </div>
-      <div class="col-md-4">
-        <h1>World</h1>
-        <h1>World</h1>
-        <h1>World</h1>
-        <h1>World</h1>
-        <h1>World</h1>
-      </div>
+
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+
+
+    </div>
+    <br><br>
+
+    <div class="section">
+
     </div>
   </div>
-</section>
-{% endblock %}
 
-{% block script %}
-{% verbatim %}
-<script>
-var app = angular.module('getQuestions', []);
-app.config(['$httpProvider', function($httpProvider) {
-    $httpProvider.defaults.xsrfCookieName = 'csrftoken';
-    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
-}]);
-app.controller('getData', function($scope, $http) {
+  <footer class="page-footer blue-grey darken-3">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Who are we?</h5>
+          <p class="grey-text text-lighten-4">We are three college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
 
-  $http.get("/questions/json_get")
-  .then(function(response) {
-      $scope.questions = response.data;
-      $scope.number = Object.keys($scope.questions).length;
-      var i = 0;
-      while(i < $scope.number){
-          console.log($scope.questions[i]);
-          i++;
-      }
 
-  });
-});
-</script>
-{% endverbatim %}
-{% endblock %}
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made with <a class="orange-text text-lighten-3" href="http://materializecss.com">Love</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+  <script>tinymce.init({ selector:'#mytextarea' });</script>
+  <script src="{% static "main/js/materialize.js" %}"></script>
+  <script src="{% static "main/js/init.js" %}"></script>
+
+  </body>
+</html>

@@ -7,18 +7,22 @@ from .models import UserProfile
 import json
 
 # Create your views here.
+
+def auth(request):
+    return render(request, "auth.html", {})
+
 def register(request):
     if request.method == 'POST':
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            user = User.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'], form.cleaned_data['password'])
+        # Todo data validation
+        if True:
+            user = User.objects.create_user(request.POST.get('username'), request.POST.get('email'), request.POST.get('password'))
             user.save()
             profile = UserProfile(user=user)
             profile.save()
             print "You have been registered sucessfully"
             return HttpResponseRedirect("/accounts/login")
         else:
-            return render(request, "index.html", {'form' : form})
+            return render(request, "index.html", {})
             print form.errors
     else:
         return HttpResponseRedirect("/")

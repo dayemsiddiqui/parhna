@@ -3,6 +3,7 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
+    url(r'auth', views.auth, name='auth'),
     url(r'register', views.register, name='register'),
     url(r'profile/edit', views.editprofile, name='editprofile'),
     url(r'profile/getprofile', views.json_getprofile, name='getprofile'),

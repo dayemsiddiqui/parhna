@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +8,8 @@
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static "main/css/materialize.css" %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static "main/css/style.css" %}" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
   <nav class="blue-grey darken-3" role="navigation">
@@ -60,7 +61,7 @@
                       </div>
 
                       <div class="chip">
-                        <img src="images/yuna.jpg" alt="Contact Person">
+
                         Jane Doe
                       </div>
                     </div>
@@ -81,7 +82,7 @@
                       </div>
 
                       <div class="chip">
-                        <img src="images/yuna.jpg" alt="Contact Person">
+
                         Jane Doe
                       </div>
                     </div>
@@ -102,7 +103,7 @@
                       </div>
 
                       <div class="chip">
-                        <img src="images/yuna.jpg" alt="Contact Person">
+                      
                         Jane Doe
                       </div>
                     </div>

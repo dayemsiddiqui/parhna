@@ -17,6 +17,8 @@
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Parhna</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#">Explore</a></li>
+        <li><a href="#">Ask question</a></li>
+        <li><a href="#">Sign In/Sign Up</a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
@@ -33,7 +35,7 @@
         <h5 class="header col s12 light">A collaborative learning platform</h5>
       </div>
       <div class="row center">
-        <a href="#" id="download-button" class="btn-large waves-effect waves-light green accent-3">Start Learning</a>
+        <a href="/questions" id="download-button" class="btn-large waves-effect waves-light green accent-3">Start Learning</a>
       </div>
       <br><br>
 
@@ -80,7 +82,9 @@
 
             <div class="collection hide">
               <section  ng-repeat="question in questions">
-                <a href="#!" class="collection-item">
+                {% verbatim %}
+                <a href="/questions/{{question.id}}" class="collection-item">
+                {% endverbatim %}
                   <div class="section">
                     <div class="valign-wrapper">
                       <div class="valign">
@@ -170,6 +174,7 @@
     $http.get("/questions/json_get")
     .then(function(response) {
         $scope.questions = response.data;
+        console.log($scope.questions);
         $('div.loader').hide();
         $('div.collection').removeClass('hide');
     });

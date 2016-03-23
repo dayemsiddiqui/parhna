@@ -37,12 +37,11 @@
           <section class="question">
             <div class="card green accent-6">
               <div class="card-content white-text">
-                <span class="card-title">The question title will go here?</span>
-                <p>This will be the description of the question asked. I am a very simple card. I am good at containing small bits of information.
-                  I am convenient because I require little markup to use effectively.</p>
+                <span class="card-title">{{question.title}}</span>
+                <p>{{question.description|safe}}</p>
                   <div class="chip right blue-grey darken-3 white-text">
-                    <img src="{% static "main/images/yuna.jpg" %}" alt="Contact Person">
-                    Jane Doe
+                    <!-- <img src="{% static "main/images/yuna.jpg" %}" alt="Contact Person"> -->
+                    {{question.author }}
                   </div>
                 </div>
                 <div class="white">
@@ -82,7 +81,7 @@
                 <p>This will be the answer of the question asked. I am a very simple card. I am good at containing small bits of information.
                   I am convenient because I require little markup to use effectively.</p>
                   <div class="chip right blue-grey darken-3 white-text">
-                    <img src="{% static "main/images/yuna.jpg" %}" alt="Contact Person">
+                    <!-- <img src="{% static "main/images/yuna.jpg" %}" alt="Contact Person"> -->
                     Jane Doe
                   </div>
                 </div>
@@ -148,7 +147,18 @@
     </div>
 
         <div class="col s4">
-
+          <div class="card-panel teal lighten-3">
+          <span class="white-text card-title"> <h5>Latest Questions</h5>
+          </span>
+          <div class="collection">
+          <a href="#!" class="collection-item">Can somebody please explain how to make a hangman in MIPS assembly?
+            <div class="chip">Jane Doe</div> <br> -5 secs ago</a>
+          <a href="#!" class="collection-item">Can somebody please explain how to make a hangman in MIPS assembly?
+            <div class="chip">Jane Doe</div> <br> -5 secs ago </a>
+          <a href="#!" class="collection-item">Can somebody please explain how to make a hangman in MIPS assembly?
+            <div class="chip">Jane Doe</div> <br> -5 secs ago </a>
+      </div>
+        </div>
         </div>
 
       </div>
