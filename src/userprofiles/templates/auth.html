@@ -37,8 +37,8 @@
                 <section>
                   <span class="card-title">
                     <ul class="tabs">
-                      <li class="tab col s4"><a class="active" href="#test1">Register</a></li>
-                      <li class="tab col s4"><a href="#test2">Sign In</a></li>
+                      <li class="tab col s4"><a class="active" id="register" href="#test1">Register</a></li>
+                      <li class="tab col s4"><a href="#test2" id="signin">Sign In</a></li>
                     </ul>
                   </span>
                   <div class="divider">
@@ -49,7 +49,7 @@
 
                 <div class="section">
                   <div class="row">
-                       <form method="post" action="/accounts/register" class="col s12">
+                       <form id="regform" method="post" action="/accounts/register" class="col s12">
                          {% csrf_token %}
                          <div class="row">
                            <div class="input-field col s12">
@@ -80,6 +80,33 @@
 
 
                        </form>
+
+                       <form id="signform" method="post" action="/accounts/register" class="col s12">
+                         {% csrf_token %}
+                         <div class="row">
+                           <div class="input-field col s12">
+                              <i class="material-icons prefix">perm_identity</i>
+                             <input id="username" name="username" type="text" class="validate">
+                             <label for="username">Username</label>
+                           </div>
+                         </div>
+                         <div class="row">
+                           <div class="input-field col s12">
+                              <i class="material-icons prefix">vpn_key</i>
+                             <input id="password" name="password" type="password" class="validate">
+                             <label for="password">Password</label>
+                           </div>
+                         </div>
+
+                         <div class="row">
+                           <div class="input-field col s12 right-align">
+                             <input  type="submit" name="submit" class=" btn-large waves-effect waves-light green accent-3" value="Sign In">
+                           </div>
+                         </div>
+
+
+                       </form>
+
                      </div>
                 </div>
 
@@ -149,6 +176,21 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="{% static "main/js/materialize.js" %}"></script>
   <script src="{% static "main/js/init.js" %}"></script>
+    <script type="text/javascript">
+      (function(){
+        $('#signform').hide();
 
+        $('#signin').click(function(){
+          $('#regform').hide();
+          $('#signform').fadeIn();
+        });
+
+        $('#register').click(function(){
+          $('#signform').hide();
+          $('#regform').fadeIn();
+        });
+
+      })();
+    </script>
   </body>
 </html>
