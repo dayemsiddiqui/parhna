@@ -48,7 +48,7 @@
 			<div class="row">
 				<div class="col-sm-6 col-xs-6">
 					<h1>Subscribe to our newsletter for latest updates.</h1>
-					<form class="form-inline" role="form">
+					<form class="form-inline" role="form" action="post">
             <div class="form-group">
               {{form.name }}
             </div>
@@ -77,6 +77,6 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="{% static "newsletter/js/bootstrap.min.js" %}"></script>
   </body>
 </html>

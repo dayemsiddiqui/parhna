@@ -1,0 +1,295 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Parhna Blog</title>
+
+  <!-- Material Design Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static "posts/css/bootstrap.min.css" %}" rel="stylesheet">
+
+  <!-- Material Design Bootstrap -->
+  <link href="{% static "posts/css/mdb.css" %}" rel="stylesheet">
+
+  <!-- Template style -->
+  <link href="{% static "posts/css/style.css" %}" rel="stylesheet">
+
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar z-depth-2 info-color">
+    <div class="container ">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand waves-effect waves-light" href="#">MDBootstrap</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="#products" class="waves-effect waves-light">Products <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" role="button" aria-expanded="false">List (click to expand) <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://mdbootstrap.com/product/magic-portfolio-for-video-maker/">Video Maker</a>
+              </li>
+              <li><a href="http://mdbootstrap.com/material-design-for-bootstrap/">Material Design for Bootstrap</a>
+              </li>
+              <li><a href="http://mdbootstrap.com/product/magic-portfolio-for-creative-agency">Creative Agency</a>
+              </li>
+              <li><a href="http://mdbootstrap.com/product/magic-portfolio-photographer">Photographer Portfolio</a>
+              </li>
+              <li class="divider"></li>
+              <li><a href="#footer">Footer</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <form class="navbar-form navbar-right waves-effect waves-light" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+
+        <h1 class="page-header">
+                    Material Design for Bootstrap
+                    <small>made with love</small>
+                </h1>
+
+        <!-- First Blog Post -->
+
+        {% if category %}
+        {% for post in posts %}
+        <h2>
+          <a href='{{ post.get_absolute_url }}'>{{ post.title }}</a>
+        </h2>
+        <p class="lead">
+          by <a href="#">MD Bootstrap</a>
+        </p>
+        <p> Posted on {{ post.timestamp }}</p>
+        <hr>
+        <img class="img-responsive z-depth-2" src="{% static "posts/img/project1.png" %}" alt="">
+        <hr>
+        <p>{{ obj.content|truncatewords:"100" }}</p>
+        <a href='{{ post.get_absolute_url }}'>
+          <button type="button" class="btn btn-info waves-effect waves-light">Read more</button>
+        </a>
+
+        <hr>
+        {% endfor %}
+        {% endif %}
+
+
+        {% if object_list %}
+        {% for obj in object_list %}
+        <h2>
+          <a href='{{ obj.get_absolute_url }}'>{{ obj.title }}</a>
+        </h2>
+        <p class="lead">
+          by <a href="#">MD Bootstrap</a>
+        </p>
+        <p> Posted on {{ obj.timestamp }}</p>
+        <hr>
+        <img class="img-responsive z-depth-2" src="{% static "posts/img/project1.png" %}" alt="">
+        <hr>
+        <p>{{ obj.content|truncatewords:"100" }}</p>
+        <a href='{{ obj.get_absolute_url }}'>
+          <button type="button" class="btn btn-info waves-effect waves-light">Read more</button>
+        </a>
+
+        <hr>
+        {% endfor %}
+        {% endif %}
+        <!-- Second Blog Post -->
+        <h2>
+                    <a href="#">Material Design for Bootstrap</a>
+                </h2>
+        <p class="lead">
+          by <a href="#">MD Bootstrap</a>
+        </p>
+        <p> Posted on August 28, 2013 at 10:00 PM</p>
+        <hr>
+        <img class="img-responsive z-depth-2" src="{% static "posts/img/project3.png" %}" alt="">
+        <hr>
+        <p>Google designed a Material Design to make a web more beautiful. Twitter created a Bootstrap to support you in faster and easier development of responsive websites. Material Design for Bootstrap contains both!</p>
+        <a href="#">
+          <button type="button" class="btn btn-info waves-effect waves-light">Read more</button>
+        </a>
+
+        <hr>
+
+        <!-- Third Blog Post -->
+        <h2>
+                    <a href="#">Creative Agency</a>
+                </h2>
+        <p class="lead">
+          by <a href="#">MD Bootstrap</a>
+        </p>
+        <p> Posted on August 28, 2013 at 10:00 PM</p>
+        <hr>
+        <img class="img-responsive z-depth-2" src="{% static "posts/img/project3.png" %}" alt="">
+        <hr>
+        <p>Did you know that a strong brand is absolutely essential for generating sales and growth on Social Media? You may not have given a lot of importance to your brand identity yet, but you surely have one. Let us take care of your branding and visibility both in online and offline world.</p>
+        <a href="#">
+          <button type="button" class="btn btn-info waves-effect waves-light">Read more</button>
+        </a>
+
+        <hr>
+
+        <!-- Pager -->
+        <ul class="pager">
+          <li class="previous">
+            <a href="#">&larr; Older</a>
+          </li>
+          <li class="next">
+            <a href="#">Newer &rarr;</a>
+          </li>
+        </ul>
+
+      </div>
+
+      <!-- Blog Sidebar Widgets Column -->
+      <div class="col-md-4">
+        <div class="sidebar">
+          <!-- Blog Search Well -->
+
+          <!-- Subscription widget -->
+          <div class="card-panel">
+            <div class="row">
+              <form class="col-md-12" action="post">
+                <h5>Subscribe to our newsletter</h5>
+                <h6>{{ template_title }}</h6>
+                <br>
+                <div class="input-field">
+                  <i class="material-icons prefix">account_circle</i>
+                  <!-- <input id="icon_prefix" type="text" class="validate"> -->
+                  {{ form.name }}
+                  <label for="icon_prefix">Your Name</label>
+                </div>
+                <div class="input-field">
+                  <i class="material-icons prefix">mail</i>
+                  <!-- <input id="icon_telephone" type="tel" class="validate"> -->
+                  {{ form.email }}
+                  <label for="icon_telephone">Your Email</label>
+                </div>
+              </form>
+              <div class="text-center">
+                <button type="submit" class="btn btn-info waves-effect waves-light">Subscribe</button>
+              </div>
+            </div>
+          </div>
+          <!--/.Subscription widget -->
+
+          <br>
+          <!-- Category widget -->
+          <h4>Categories</h4>
+          <div class="collection">
+            {% if categories %}
+              {% for category in categories %}
+                <a href='{{ category.get_absolute_url }}' class="collection-item">{{ category.title }}</a>
+              {% endfor %}
+            {% endif %}
+          </div>
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+
+    <hr>
+
+  </div>
+  <!-- /.container -->
+
+
+  <!-- Footer -->
+  <footer class="page-footer info-color darken-1" if="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-md-offset-1">
+          <p class="white-text center-on-small-only">GET STARTED</p>
+          <p class="white-text center-on-small-only">Register for free and start to create amazing things.</p>
+          <a href="#" class="btn btn-danger waves-effect waves-light">Get started!</a>
+
+        </div>
+        <hr class="hidden-lg hidden-md">
+
+        <div class="col-md-2">
+          <p class="white-text center-on-small-only">USEFUL LINKS</p>
+          <ul>
+            <li><a href="#" data-toggle="modal" data-target="#myModal" class="grey-text text-lighten-3" href="#!">Contact us</a>
+            </li>
+            <li><a class="grey-text text-lighten-3" href="#" target="_blank">About MDB</a>
+            </li>
+            <li><a class="grey-text text-lighten-3" href="#" target="_blank">Support</a>
+            </li>
+            <li><a class="grey-text text-lighten-3" href="#" target="_blank">Bug report</a>
+            </li>
+
+
+          </ul>
+        </div>
+        <hr class="hidden-lg hidden-md">
+
+        <div class="col-md-3 text-center">
+          <p class="white-text text-center"> SOCIAL MEDIA</p>
+          <a target="_blank" href="#" class="btn-floating btn-large fb-bg waves-effect waves-light"><i class="fa fa-facebook"> </i></a>
+          <a target="_blank" href="#" class="btn-floating btn-large tw-bg waves-effect waves-light"><i class="fa fa-twitter"> </i></a>
+          <a target="_blank" href="#" class="btn-floating btn-large gplus-bg waves-effect waves-light"><i class="fa fa-google-plus"> </i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        <div class="col-md-10 col-md-offset-1"> © 2015 Copyright <a href="#">MDBootstrap.com </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <!-- SCRIPTS -->
+
+  <!-- JQuery -->
+  <script type="text/javascript" src="{% static "posts/js/jquery.min.js" %}"></script>
+
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{% static "posts/js/bootstrap.min.js" %}"></script>
+
+  <!-- Material Design Bootstrap -->
+  <script type="text/javascript" src="{% static "posts/js/mdb.js" %}"></script>
+
+
+</body>
+
+</html>
