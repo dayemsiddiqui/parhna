@@ -11,9 +11,14 @@
   <link href="{% static "main/css/materialize.css" %}" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="{% static "main/css/style.css" %}" type="text/css" rel="stylesheet" media="screen,projection"/>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <!-- <link href="{% static "bootflat/css/bootflat.min.css" %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static "bootflat/js/icheck.min.js" %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static "bootflat/js/jquery.fs.selecter.min.js" %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static "bootflat/js/jquery.fs.stepper.min.js" %}" type="text/css" rel="stylesheet" media="screen,projection"/> -->
 </head>
-<body>
-  <nav class="blue-grey darken-3" role="navigation">
+<!-- style="background: url({% static "" %}logo.jpg); background-size:cover;" -->
+<body style="background: #20B575;">
+  <nav class="blue darken-3" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Parhna</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#">Explore</a></li>
@@ -27,15 +32,16 @@
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
   </nav>
-  <div class="section no-pad-bot" id="index-banner">
+
+  <div class="section no-pad-bot"  id="index-banner">
     <div class="container">
       <br><br>
-      <h1 class="header center  teal-text darken-4-text">Parhna</h1>
+      <h1 class="header center  white-text darken-4-text">Parhna</h1>
       <div class="row center">
-        <h5 class="header col s12 light">A collaborative learning platform</h5>
+        <h5 class="header col s12 light yellow-text">A collaborative learning platform</h5>
       </div>
       <div class="row center">
-        <a href="/questions" id="download-button" class="btn-large waves-effect waves-light green accent-3">Start Learning</a>
+        <a href="/questions" id="download-button" class="btn-large blue darken-3">Start Learning</a>
       </div>
       <br><br>
 
@@ -55,9 +61,9 @@
               <section>
                 <span class="card-title">
                   <ul class="tabs">
-                    <li class="tab col s4"><a href="#test1">Trending</a></li>
-                    <li class="tab col s4"><a class="active" href="#test2">Popular</a></li>
-                    <li class="tab col s4"><a href="#test3">Latest</a></li>
+                    <li class="tab col s4 "><a  class="orange-text" href="#test1">Trending</a></li>
+                    <li class="tab col s4"><a class="active orange-text" href="#test2">Popular</a></li>
+                    <li class="tab col s4"><a class="orange-text" href="#test3">Latest</a></li>
                   </ul>
                 </span>
               </section>
@@ -65,7 +71,7 @@
 
 
 
-              <div class="section center loader">
+              <div class="section center loader ">
                 <div class="preloader-wrapper big active">
                   <div class="spinner-layer spinner-green-only">
                     <div class="circle-clipper left">
@@ -80,7 +86,7 @@
               </div>
 
 
-            <div class="collection hide">
+            <div class="collection hide ">
               <section  ng-repeat="question in questions">
                 {% verbatim %}
                 <a href="/questions/{{question.id}}" class="collection-item">
@@ -88,7 +94,7 @@
                   <div class="section">
                     <div class="valign-wrapper">
                       <div class="valign">
-                        <h6 ng-bind="question.title"></h6>
+                        <h6 ng-bind="question.title" class="orange-text"></h6>
                         <!-- <h6>I am a very simple card. I am good at containing small bits of information.
                           I am convenient because I require little markup to use effectively.</h6> -->
                         </div>
@@ -120,7 +126,7 @@
     </div>
   </div>
 
-  <footer class="page-footer blue-grey darken-3">
+  <footer class="page-footer blue darken-3">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">

@@ -37,12 +37,16 @@
           <section class="question">
             <div class="card green accent-6">
               <div class="card-content white-text">
+                <div class="right darken-3 white-text" style="">
+                    {{question.votes}}
+                    <i class="material-icons">thumb_up</i>
+                </div>
                 <span class="card-title">{{question.title}}</span>
                 <p>{{question.description|safe}}</p>
                   <div class="chip right blue-grey darken-3 white-text">
-                    <!-- <img src="{% static "main/images/yuna.jpg" %}" alt="Contact Person"> -->
                     {{question.author }}
                   </div>
+
                 </div>
                 <div class="white">
                   <div class="divider"></div>
@@ -81,7 +85,6 @@
               <div class="card-content white-text">
                 <p>{{answer.answer}}</p>
                   <div class="chip right blue-grey darken-3 white-text">
-                    <!-- <img src="{% static "main/images/yuna.jpg" %}" alt="Contact Person"> -->
                     {{answer.author}}
                   </div>
                 </div>
