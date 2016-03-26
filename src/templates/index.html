@@ -4,19 +4,20 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>Starter Template - Materialize</title>
+  <title>Parhna - A collaborative learning platform</title>
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="{% static "main/css/materialize.css" %}" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="{% static "main/css/style.css" %}" type="text/css" rel="stylesheet" media="screen,projection"/>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-  <!-- <link href="{% static "bootflat/css/bootflat.min.css" %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static "bootflat/css/demo.css" %}" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="{% static "bootflat/js/icheck.min.js" %}" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="{% static "bootflat/js/jquery.fs.selecter.min.js" %}" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="{% static "bootflat/js/jquery.fs.stepper.min.js" %}" type="text/css" rel="stylesheet" media="screen,projection"/> -->
+  <link href="{% static "bootflat/js/application.js" %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static "bootflat/js/prettify.js" %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+
 </head>
-<!-- style="background: url({% static "" %}logo.jpg); background-size:cover;" -->
+
 <body style="background: #20B575;">
   <nav class="blue darken-3" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Parhna</a>
@@ -35,14 +36,16 @@
 
   <div class="section no-pad-bot"  id="index-banner">
     <div class="container">
-      <br><br>
-      <h1 class="header center  white-text darken-4-text">Parhna</h1>
-      <div class="row center">
-        <h5 class="header col s12 light yellow-text">A collaborative learning platform</h5>
+      <div class="circulo">
       </div>
       <div class="row center">
+        <div class="col s12">
+          <img src=" {% static "" %}logomain.png" id="logo" alt="" />
+
+      </div>
         <a href="/questions" id="download-button" class="btn-large blue darken-3">Start Learning</a>
-      </div>
+
+    </div>
       <br><br>
 
     </div>
@@ -53,17 +56,18 @@
     <div class="section">
 
       <div class="row">
+        <div class="col s2">
 
-        <div class="col s12">
+        </div>
+        <div class="col s8 offset-s2">
           <div class="card">
-
             <div class="card-content" ng-app="getQuestions" ng-controller="getData">
               <section>
                 <span class="card-title">
                   <ul class="tabs">
-                    <li class="tab col s4 "><a  class="orange-text" href="#test1">Trending</a></li>
-                    <li class="tab col s4"><a class="active orange-text" href="#test2">Popular</a></li>
-                    <li class="tab col s4"><a class="orange-text" href="#test3">Latest</a></li>
+                    <li class="tab"><a  class="orange-text" href="#test1">Trending</a></li>
+                    <li class="tab"><a class="active orange-text" href="#test2">Popular</a></li>
+                    <li class="tab"><a class="orange-text" href="#test3">Latest</a></li>
                   </ul>
                 </span>
               </section>
@@ -187,6 +191,8 @@
   });
   </script>
   {% endverbatim %}
+  <script type="text/javascript">
 
+  </script>
   </body>
 </html>
