@@ -54,7 +54,6 @@ var saveCanvas = function (){
 				canvasX = e.pageX - myCanvas.offsetLeft;
 				canvasY = e.pageY - myCanvas.offsetTop;
 				ctx.lineTo(canvasX, canvasY);
-				// ctx.strokeStyle = "#000";
 				ctx.stroke();
 			}
 		})
