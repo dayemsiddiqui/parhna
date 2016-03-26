@@ -17,10 +17,11 @@ class Question(models.Model):
         return self.email
 
 class Answer(models.Model):
+    answer_id = models.AutoField(primary_key=True)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     answer = models.TextField(blank=True, null=True)
-    author = models.OneToOneField(User, primary_key=True)
-    published_at = models.DateTimeField(auto_now_add=True, auto_now=False)
+    author = models.ForeignKey(User)
+    published_at = models.DateTimeField(auto_now_add=True, auto_now=False, null=True)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
     votes = models.IntegerField()
 

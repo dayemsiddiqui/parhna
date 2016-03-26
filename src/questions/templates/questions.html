@@ -75,14 +75,14 @@
           </section>
           <h3>Answers</h3>
 
+      {% for answer in answers %}
           <section class="answer">
             <div class="card  teal lighten-2">
               <div class="card-content white-text">
-                <p>This will be the answer of the question asked. I am a very simple card. I am good at containing small bits of information.
-                  I am convenient because I require little markup to use effectively.</p>
+                <p>{{answer.answer}}</p>
                   <div class="chip right blue-grey darken-3 white-text">
                     <!-- <img src="{% static "main/images/yuna.jpg" %}" alt="Contact Person"> -->
-                    Jane Doe
+                    {{answer.author}}
                   </div>
                 </div>
                 <div class="white">
@@ -114,6 +114,9 @@
                 </div>
               </div>
           </section>
+          {% endfor %}
+
+
 
 
           <div class="section">
@@ -121,16 +124,20 @@
               <div class="card">
                 <div class="card-content">
                   <div class="row">
-                    <form class="col s12">
+                    <form class="col s12" action="/questions/answer/{{question.question_id}}/" method="post">
                       <div class="section">
                         <h4>Answer this question</h4>
                       </div>
                       <div class="row">
+
                         <div class="input-field col s12">
-                          <textarea id="textarea1" class="materialize-textarea"></textarea>
-                          <label for="textarea1">Your Answer</label>
-                          <input class="btn-large waves-effect waves-light green accent-3" type="submit" name="submit"  value="Post Answer">
+                            {% csrf_token %}
+                            <textarea id="textarea1" name='answer' class="materialize-textarea"></textarea>
+                            <label for="textarea1">Your Answer</label>
+                            <input class="btn-large waves-effect waves-light green accent-3" type="submit" name="submit"  value="Post Answer">
+
                         </div>
+
                       </div>
                     </form>
                   </div>

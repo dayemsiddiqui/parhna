@@ -4,6 +4,7 @@ from . import views
 
 urlpatterns = [
 
+url(r'^answer/(?P<q_id>\d+)/$', views.answer, name='answer'),
     url(r'^(?P<q_id>\d+)/$', views.get_question, name='get_question'),
     url(r'^$', views.index, name='index'),
     url(r'^ask_question$', views.ask_question, name='ask_question'),

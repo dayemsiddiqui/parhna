@@ -95,8 +95,8 @@
                       </div>
 
                       <div class="chip">
-                        <img src="{% static "main/images/yuna.jpg" %}" alt="Contact Person">
-                        Jane Doe
+                        <!-- <img src="{% static "main/images/yuna.jpg" %}" alt="Contact Person"> -->
+                        {% verbatim %} Asked By {{question.author}} {% endverbatim %}
                       </div>
                     </div>
                 </a>

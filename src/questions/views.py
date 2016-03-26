@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 import json
-from .models import Question
+from .models import Question, Answer
 from django.core import serializers
 
 # Create your views here.
@@ -14,10 +14,30 @@ def ask_question(request):
     else:
         return HttpResponseRedirect("/questions")
 
+def answer(request, q_id):
+    if request.method == 'POST':
+        if request.user.is_authenticated():
+            answer = Answer(answer=request.POST.get("answer"), question=Question.objects.get(question_id=q_id), author=request.user, votes=0)
+            answer.save()
+            print "Answer Save"
+            return HttpResponseRedirect("/questions/"+str(q_id))
+    else:
+        return HttpResponseRedirect("/accounts/auth")
+
+
 def get_question(request, q_id):
+
     question = Question.objects.get(question_id=q_id)
+
+    try:
+        answers = Answer.objects.filter(question=question)
+        print "Found something"
+    except Answer.DoesNotExist:
+        answers = None
+
     context = {
-        'question': question
+        'question': question,
+        'answers': answers
     }
     return render(request, "questions.html", context)
 
