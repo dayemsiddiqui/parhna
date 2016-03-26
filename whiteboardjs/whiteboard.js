@@ -2,13 +2,36 @@ window.onload = function() {
 	var myCanvas = document.getElementById("myCanvas");
 	var ctx = myCanvas.getContext("2d");
 
+
+
+// Canvas Image Save Function
+var saveCanvas = function (){
+	// save canvas image as data url (png format by default)
+	var dataURL = myCanvas.toDataURL();
+
+	// set canvasImg image src to dataURL
+	// so it can be saved as an image
+	document.getElementById('canvasImg').src = dataURL;
+
+}
+
+
+
+
+
+
+
+
+
     // Fill Window Width and Height
-    myCanvas.width = window.innerWidth;
-	myCanvas.height = window.innerHeight;
+    myCanvas.width = 800;
+	myCanvas.height = 500;
 
 	// Set Background Color
     ctx.fillStyle="#fff";
     ctx.fillRect(0,0,myCanvas.width,myCanvas.height);
+
+
 
     // Mouse Event Handlers
 	if(myCanvas){
@@ -31,7 +54,7 @@ window.onload = function() {
 				canvasX = e.pageX - myCanvas.offsetLeft;
 				canvasY = e.pageY - myCanvas.offsetTop;
 				ctx.lineTo(canvasX, canvasY);
-				ctx.strokeStyle = "#000";
+				// ctx.strokeStyle = "#000";
 				ctx.stroke();
 			}
 		})
@@ -83,4 +106,32 @@ window.onload = function() {
 	document.body.addEventListener('touchmove',function(evt){
 		evt.preventDefault();
 	},false);
+
+
+// Clears The Canvas And Saves Image
+	$('#clear').click(function() {
+		saveCanvas();
+		ctx.fillStyle="#ffffff";
+		ctx.fillRect(0, 0, myCanvas.width, myCanvas.height);
+	});
+
+
+// Color Picker Tool
+	$('#colorSelector').ColorPicker({
+	color: '#0000ff',
+	onShow: function (colpkr) {
+		$(colpkr).fadeIn(500);
+		return false;
+	},
+	onHide: function (colpkr) {
+		$(colpkr).fadeOut(500);
+		return false;
+	},
+	onChange: function (hsb, hex, rgb) {
+		$('#colorSelector').css('backgroundColor', '#' + hex);
+		ctx.strokeStyle = "#" + hex;
+	}
+});
+
+
 };

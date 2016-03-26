@@ -5,13 +5,11 @@
 <title>HTML5 Canvas Drawing Board</title>
 <script type="text/JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js?ver=1.4.2"></script>
 <script type="text/javascript" src="whiteboard.js">
-
 </script>
+<link rel="stylesheet" media="screen" type="text/css" href="css/colorpicker.css" />
+<script type="text/javascript" src="js/colorpicker.js"></script>
 <style>
-* {
-margin: 0;
-padding: 0;
-}
+
 
 body, html {
 height: 100%;
@@ -19,14 +17,27 @@ height: 100%;
 
 #myCanvas {
 cursor: crosshair;
-  position: fixed;
+border-color: red;
+border-style: solid;
+}
+#colorSelector {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    background: url(images/select.png);
 }
 </style>
 
 </head>
-<body>
+<body style="background:grey;">
+
 <canvas id="myCanvas">
   Sorry, your browser does not support HTML5 canvas technology.
 </canvas>
+<br>
+<button type="button" id="clear"  name="button">Clear Scratchpad</button>
+<div id="colorSelector"><div style="background-color: rgb(255, 0, 136);margin: 0;padding: 0;"></div></div>
+<br>
+<img id="canvasImg" alt="Right click to save me!">
 </body>
 </html>
