@@ -12,3 +12,106 @@
 .icon-block .material-icons {
 	font-size: inherit;
 }
+.grass-light{
+  background: #A0D468;
+  background-color: #A0D468;
+}
+.grass-dark{
+  background: #8CC152;
+  background-color: #8CC152;
+}
+
+.aqua-light{
+  background-color: #4FC1E9;
+  background: #4FC1E9;
+}
+
+.aqua-dark{
+  background: #3BAFDA;
+  background-color: #3BAFDA;
+}
+
+.bluejeans-light{
+  background: #5D9CEC;
+  background-color:  #4A89DC;
+}
+
+.mint-light{
+  background: #48CFAD;
+  background-color: #37BC9B;
+}
+
+.sunflower-light{
+  background: #FFCE54;
+  background-color: #FFCE54;
+}
+
+.sunflower-dark{
+  background: #F6BB42;
+  background-color: #F6BB42;
+}
+
+.bittersweet-light{
+  background: #FC6E51;
+  background-color: #FC6E51;
+}
+
+.bittersweet-dark{
+  background: #E9573F;
+  background-color: #E9573F;
+}
+
+.grapefruit-light{
+  background: #ED5565;
+  background-color: #ED5565;
+}
+
+.grapefruit-dark{
+  background: #DA4453;
+  background-color: #DA4453;
+}
+
+.lavender-light{
+  background: #AC92EC;
+  background-color: #AC92EC;
+}
+
+.lavender-dark{
+  background: #967ADC;
+  background-color: #967ADC;
+}
+
+.pinkrose-light{
+  background: #EC87C0;
+  background-color: #EC87C0;
+}
+
+.pinkrose-dark{
+  background: #D770AD;
+  background-color: #D770AD;
+}
+
+.lightgrey-light{
+  background: #F5F7FA;
+  background-color: #F5F7FA;
+}
+
+.lightgrey-dark{
+  background: #E6E9ED;
+  background-color: #E6E9ED;
+}
+
+.mediumgrey-light{
+  background: #CCD1D9;
+  background-color: #CCD1D9;
+}
+.mediumgrey-dark{
+  background: #AAB2BD;
+  background-color: #AAB2BD;
+}
+
+.size-restrain{
+  max-width: 40%;
+  padding: 0;
+  margin: 0;
+}

@@ -8,11 +8,12 @@
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="{% static "bootflat/css/bootflat.min.css" %}" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="{% static "main/css/materialize.css" %}" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="{% static "main/css/style.css" %}" type="text/css" rel="stylesheet" media="screen,projection"/>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 </head>
-<body>
+<body class="lightgrey-dark">
   <nav class="blue-grey darken-3" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Parhna</a>
       <ul class="right hide-on-med-and-down">
@@ -31,11 +32,11 @@
       <br><br>
       <div class="row">
 
-        <div class="col s8">
+        <div class="col s12">
         <div class="row">
         <div class="col s12">
           <section class="question">
-            <div class="card green accent-6">
+            <div class="card grass-light">
               <div class="card-content white-text">
                 <div class="right darken-3 white-text" style="">
                     {{question.votes}}
@@ -43,7 +44,7 @@
                 </div>
                 <span class="card-title">{{question.title}}</span>
                 <p>{{question.description|safe}}</p>
-                  <div class="chip right blue-grey darken-3 white-text">
+                  <div class="chip right bittersweet-light white-text">
                     {{question.author }}
                   </div>
 
@@ -52,12 +53,12 @@
                   <div class="divider"></div>
                   <div class="card-action">
                     This is the first comment
-                    <span class="badge">yogi bear</span>
+                    <span class="badge mint-light white-text">yogi bear</span>
                   </div>
                   <div class="divider"></div>
                   <div class="card-action">
                     This is the second comment
-                    <span class="badge">flinstone</span>
+                    <span class="badge mint-light white-text">flinstone</span>
                   </div>
 
                   <!-- Comment Option -->
@@ -77,14 +78,61 @@
                 </div>
               </div>
           </section>
-          <h3>Answers</h3>
 
-      {% for answer in answers %}
-          <section class="answer">
-            <div class="card  teal lighten-2">
+          <div class="col-md-12">
+                  <div class="timeline">
+                    <dl>
+                      <dt>Answers</dt>
+                      {% for answer in answers %}
+                      {% if forloop.counter|divisibleby:2 %}
+                      <dd class="pos-right clearfix">
+                      {% else %}
+                      <dd class="pos-left clearfix">
+                        {% endif %}
+
+                        <div class="circ"></div>
+                        <div class="time">Apr 14 </div>
+                        <div class="events">
+                          <div class="pull-left" style="margin-right:-60px;">
+                            <img class="events-object img-rounded size-restrain" src="{% static "main/img/profile.png" %}">
+                          </div>
+                          <div class="events-body">
+                            <h3 class="events-heading"><strong>{{answer.author}}</strong></h3>
+                            <p>{{answer.answer}} Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.</p>
+                          </div>
+                        </div>
+                      </dd>
+
+
+                      <!-- <dd class="pos-left clearfix">
+                        <div class="circ"></div>
+                        <div class="time">Apr 10</div>
+                        <div class="events">
+                          <div class="pull-left">
+                            <img class="events-object img-rounded" src="img/photo-2.jpg">
+                            <div class="events-body">
+                              <h4 class="events-heading">Bootflat</h4>
+                              <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </dd> -->
+
+                      {% endfor %}
+
+
+
+                    </dl>
+                  </div>
+                </div>
+
+
+
+          <!-- <section class="answer">
+            <div class="card  aqua-light">
               <div class="card-content white-text">
                 <p>{{answer.answer}}</p>
-                  <div class="chip right blue-grey darken-3 white-text">
+                  <div class="chip right bittersweet-light white-text">
                     {{answer.author}}
                   </div>
                 </div>
@@ -92,16 +140,16 @@
                   <div class="divider"></div>
                   <div class="card-action">
                     This is the first comment
-                    <span class="badge">yogi bear</span>
+                    <span class="badge mint-light white-text">yogi bear</span>
                   </div>
                   <div class="divider"></div>
                   <div class="card-action">
                     This is the second comment
-                    <span class="badge">flinstone</span>
+                    <span class="badge mint-light white-text">flinstone</span>
                   </div>
 
                   <!-- Comment Option -->
-                  <div class="divider"></div>
+                  <!-- <div class="divider"></div>
                   <div class="card-action">
                     <div class="row">
                       <div class="col s11">
@@ -111,20 +159,20 @@
                         <a class="btn-floating btn-large waves-effect waves-light green accent-3"><i class="material-icons">add</i></a>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                     <!-- Comment Option End -->
-
+<!--
                 </div>
               </div>
-          </section>
-          {% endfor %}
+          </section>  -->
+
 
 
 
 
           <div class="section">
-            <section class="answer">
-              <div class="card">
+            <section>
+              <div>
                 <div class="card-content">
                   <div class="row">
                     <form class="col s12" action="/questions/answer/{{question.question_id}}/" method="post">
@@ -137,7 +185,7 @@
                             {% csrf_token %}
                             <textarea id="textarea1" name='answer' class="materialize-textarea"></textarea>
                             <label for="textarea1">Your Answer</label>
-                            <input class="btn-large waves-effect waves-light green accent-3" type="submit" name="submit"  value="Post Answer">
+                            <input class="btn btn-info btn-block" type="submit" name="submit"  value="Post Answer">
 
                         </div>
 
@@ -156,20 +204,20 @@
       </div>
     </div>
 
-        <div class="col s4">
-          <div class="card-panel teal lighten-3">
+        <!-- <div class="col s4">
+          <div class="card-panel sunflower-light">
           <span class="white-text card-title"> <h5>Latest Questions</h5>
           </span>
           <div class="collection">
           <a href="#!" class="collection-item">Can somebody please explain how to make a hangman in MIPS assembly?
-            <div class="chip">Jane Doe</div> <br> -5 secs ago</a>
+            <div class="chip mint-light white-text">Jane Doe</div> <br> -5 secs ago</a>
           <a href="#!" class="collection-item">Can somebody please explain how to make a hangman in MIPS assembly?
-            <div class="chip">Jane Doe</div> <br> -5 secs ago </a>
+            <div class="chip mint-light white-text">Jane Doe</div> <br> -5 secs ago </a>
           <a href="#!" class="collection-item">Can somebody please explain how to make a hangman in MIPS assembly?
-            <div class="chip">Jane Doe</div> <br> -5 secs ago </a>
+            <div class="chip mint-light white-text">Jane Doe</div> <br> -5 secs ago </a>
       </div>
         </div>
-        </div>
+        </div> -->
 
       </div>
       <br><br>
@@ -179,18 +227,19 @@
   </div>
 
 
-  <div class="container">
-    <div class="section">
+  <!-- <div class="container">
+  <div class="section">
 
 
 
-    </div>
-    <br><br>
+</div>
+<br><br>
 
-    <div class="section">
+<div class="section">
 
-    </div>
-  </div>
+</div>
+</div> -->
+
 
   <footer class="page-footer blue-grey darken-3">
     <div class="container">
@@ -233,6 +282,7 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="{% static "main/js/materialize.js" %}"></script>
   <script src="{% static "main/js/init.js" %}"></script>
+  <script src="{% static "bootflat/js/bootflat.min.js" %}"></script>
 
   </body>
 </html>
