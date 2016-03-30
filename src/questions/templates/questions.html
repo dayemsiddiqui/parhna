@@ -14,7 +14,7 @@
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 </head>
 <body class="lightgrey-dark">
-  <nav class="blue-grey darken-3" role="navigation">
+  <nav class="mint-light" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Parhna</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#">Explore</a></li>
@@ -35,7 +35,7 @@
         <div class="col s12">
         <div class="row">
         <div class="col s12">
-          <section class="question">
+          <!-- <section class="question">
             <div class="card grass-light">
               <div class="card-content white-text">
                 <div class="right darken-3 white-text" style="">
@@ -62,7 +62,7 @@
                   </div>
 
                   <!-- Comment Option -->
-                  <div class="divider"></div>
+                  <!-- <div class="divider"></div>
                   <div class="card-action">
                     <div class="row">
                       <div class=" col s11">
@@ -72,12 +72,20 @@
                         <a class="btn-floating btn-large waves-effect waves-light green accent-3"><i class="material-icons">add</i></a>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                     <!-- Comment Option End -->
 
-                </div>
+                <!-- </div>
               </div>
-          </section>
+          </section> -->
+
+          <div class="col-md-12">
+            <div class="alert alert-success">
+              <h4>{{question.title}}</h4>
+              <p>{{question.description|safe}}</p>
+            </div>
+
+          </div>
 
           <div class="col-md-12">
                   <div class="timeline">
@@ -98,7 +106,7 @@
                           </div>
                           <div class="events-body">
                             <h3 class="events-heading"><strong>{{answer.author}}</strong></h3>
-                            <p>{{answer.answer}} Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.</p>
+                            <p>{{answer.answer}}</p>
                           </div>
                         </div>
                       </dd>
@@ -241,7 +249,7 @@
 </div> -->
 
 
-  <footer class="page-footer blue-grey darken-3">
+  <footer class="page-footer  blue darken-3">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
