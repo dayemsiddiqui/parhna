@@ -83,30 +83,9 @@
 
         <!-- First Blog Post -->
 
-        {% if category %}
-        {% for post in posts %}
-        <h2>
-          <a href='{{ post.get_absolute_url }}'>{{ post.title }}</a>
-        </h2>
-        <p class="lead">
-          by <a href="#">MD Bootstrap</a>
-        </p>
-        <p> Posted on {{ post.timestamp }}</p>
-        <hr>
-        <img class="img-responsive z-depth-2" src="{% static "posts/img/project1.png" %}" alt="">
-        <hr>
-        <p>{{ obj.content|truncatewords:"100" }}</p>
-        <a href='{{ post.get_absolute_url }}'>
-          <button type="button" class="btn btn-info waves-effect waves-light">Read more</button>
-        </a>
-
-        <hr>
-        {% endfor %}
-        {% endif %}
-
-
         {% if object_list %}
         {% for obj in object_list %}
+        <div class="card-panel">
         <h2>
           <a href='{{ obj.get_absolute_url }}'>{{ obj.title }}</a>
         </h2>
@@ -120,12 +99,13 @@
         <p>{{ obj.content|truncatewords:"100" }}</p>
         <a href='{{ obj.get_absolute_url }}'>
           <button type="button" class="btn btn-info waves-effect waves-light">Read more</button>
-        </a>
+      </a>
+    </div>
 
-        <hr>
         {% endfor %}
         {% endif %}
         <!-- Second Blog Post -->
+        <!--
         <h2>
                     <a href="#">Material Design for Bootstrap</a>
                 </h2>
@@ -142,9 +122,10 @@
         </a>
 
         <hr>
-
+        -->
         <!-- Third Blog Post -->
-        <h2>
+        <!--
+                <h2>
                     <a href="#">Creative Agency</a>
                 </h2>
         <p class="lead">
@@ -160,14 +141,41 @@
         </a>
 
         <hr>
-
+    -->
         <!-- Pager -->
         <ul class="pager">
           <li class="previous">
-            <a href="#">&larr; Older</a>
+              {% if object_list.has_previous %}
+            <a href="?page={{ object_list.previous_page_number }}">&larr; Previous</a>
+        {% endif %}
+          </li>
+          <!-- paginator up to 5 pages  -->
+          <li>
+              <!--
+              {% if object_list.has_previous %}
+                  <a href="?page={{ object_list.previous_page_number }}">{{ object_list.previous_page_number }}</a>
+              {% endif %}
+          -->
+               <!-- Page {{ object_list.number }} of {{ object_list.paginator.num_pages }} -->
+               {% for p in object_list.paginator.page_range %}
+                {% if p == object_list.number %}
+                 <a href="?page={{p}}" class="active">{{ p }}</a>
+                 {% else %}
+                 <a href="?page={{p}}">{{ p }}</a>
+                 {% endif %}
+               {% endfor %}
+               <!-- <a href="#!">{{ object_list.number }}</a> -->
+
+<!--
+               {% if object_list.has_next %}
+                   <a href="?page={{ object_list.next_page_number }}">{{ object_list.next_page_number }}</a>
+               {% endif %}
+-->
           </li>
           <li class="next">
-            <a href="#">Newer &rarr;</a>
+            {% if object_list.has_next %}
+                <a href="?page={{ object_list.next_page_number }}">Next &rarr;</a>
+            {% endif %}
           </li>
         </ul>
 
@@ -181,7 +189,7 @@
           <!-- Subscription widget -->
           <div class="card-panel">
             <div class="row">
-              <form class="col-md-12" action="post">
+              <form class="col-md-12" action="" method="post">
                 <h5>Subscribe to our newsletter</h5>
                 <h6>{{ template_title }}</h6>
                 <br>
@@ -189,24 +197,29 @@
                   <i class="material-icons prefix">account_circle</i>
                   <!-- <input id="icon_prefix" type="text" class="validate"> -->
                   {{ form.name }}
-                  <label for="icon_prefix">Your Name</label>
+                  <label for="icon_prefix">Name</label>
                 </div>
                 <div class="input-field">
                   <i class="material-icons prefix">mail</i>
                   <!-- <input id="icon_telephone" type="tel" class="validate"> -->
                   {{ form.email }}
-                  <label for="icon_telephone">Your Email</label>
+                  <label for="icon_telephone">Email</label>
+                </div>
+                {% csrf_token %}
+                <div class="text-center">
+                  <button type="submit" class="btn btn-info waves-effect waves-light">Subscribe</button>
                 </div>
               </form>
-              <div class="text-center">
-                <button type="submit" class="btn btn-info waves-effect waves-light">Subscribe</button>
-              </div>
+
+
             </div>
           </div>
           <!--/.Subscription widget -->
 
           <br>
           <!-- Category widget -->
+
+
           <h4>Categories</h4>
           <div class="collection">
             {% if categories %}
